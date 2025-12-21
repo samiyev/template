@@ -289,6 +289,48 @@ git push origin main --tags
 
 **⛔ MUST read `./ROADMAP.md` first** to understand current status.
 
+## ROADMAP.md Rules (MANDATORY)
+
+**⛔ Every monorepo MUST have `ROADMAP.md` in root.**
+
+| Rule | Requirement |
+|------|-------------|
+| **Structure** | Phases → Milestones → Tasks with checkboxes |
+| **Versioning** | Each package has independent semver (v0.1.0) |
+| **Dependencies** | Show "Depends on: package vX.X.X" |
+| **Status table** | Current version + next milestone per package |
+| **Architecture** | ASCII diagram of package relationships |
+
+**Milestone format:**
+```markdown
+#### 1.1 @project/core v0.1.0 - Feature Name
+> **Depends on:** `@project/other v0.1.0`
+
+| Task | Status |
+|------|--------|
+| Task description | [x] or [ ] |
+```
+
+**Status indicators:**
+```
+✅ Completed | 🔄 In Progress | ⏳ Planned
+```
+
+**⛔ RULES:**
+- Update ROADMAP.md BEFORE starting new milestone
+- Mark tasks `[x]` immediately when done
+- Update "Current Status" table after each release
+- Never skip dependency order (core → api → clients)
+- One package version = one atomic milestone
+
+**Dependency order (always):**
+```
+1. @project/core    (domain, types, use cases)
+2. @project/api     (uses core)
+3. @project/client  (re-exports from core)
+4. @project/web     (uses client + api)
+```
+
 ## Shared Code Policy
 
 **⛔ Code duplication is PROHIBITED.**
