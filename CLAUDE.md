@@ -291,24 +291,29 @@ git push origin main --tags
 
 ## ROADMAP.md Rules (MANDATORY)
 
-**⛔ Every monorepo MUST have `ROADMAP.md` in root.**
+**⛔ Every monorepo MUST have ROADMAP.md files:**
 
-| Rule | Requirement |
-|------|-------------|
-| **Structure** | Phases → Milestones → Tasks with checkboxes |
-| **Versioning** | Each package has independent semver (v0.1.0) |
-| **Dependencies** | Show "Depends on: package vX.X.X" |
-| **Status table** | Current version + next milestone per package |
-| **Architecture** | ASCII diagram of package relationships |
+| Location | Purpose |
+|----------|---------|
+| `/ROADMAP.md` | Master roadmap: phases, architecture, status table |
+| `/packages/*/ROADMAP.md` | Package roadmap: detailed milestones, tasks |
+| `/apps/*/ROADMAP.md` | App roadmap: features, UI/UX tasks |
 
-**Milestone format:**
+**Root ROADMAP.md:**
 ```markdown
-#### 1.1 @project/core v0.1.0 - Feature Name
-> **Depends on:** `@project/other v0.1.0`
+## Current Status
+| Package | Version | Next Milestone |
+|---------|---------|----------------|
+| @project/core | v0.2.0 ✅ | v0.3.0 - Feature |
+```
 
+**Package ROADMAP.md:**
+```markdown
+## v0.3.0 - Feature Name
 | Task | Status |
 |------|--------|
-| Task description | [x] or [ ] |
+| Entity: Name | [x] |
+| Use case | [ ] |
 ```
 
 **Status indicators:**
@@ -317,11 +322,11 @@ git push origin main --tags
 ```
 
 **⛔ RULES:**
-- Update ROADMAP.md BEFORE starting new milestone
+- Root ROADMAP = bird's eye view (phases, dependencies)
+- Package ROADMAP = detailed tasks (checkboxes)
+- Update BEFORE starting new milestone
 - Mark tasks `[x]` immediately when done
-- Update "Current Status" table after each release
-- Never skip dependency order (core → api → clients)
-- One package version = one atomic milestone
+- Never skip dependency order
 
 **Dependency order (always):**
 ```

@@ -7,18 +7,24 @@ Standard templates for Claude Code configuration across all projects.
 | File | Description |
 |------|-------------|
 | `CLAUDE.md` | Claude Code configuration with all mandatory rules |
-| `ROADMAP.md` | Monorepo roadmap template with phases and milestones |
+| `ROADMAP.md` | Root roadmap: phases, architecture, status table |
+| `ROADMAP.package.md` | Package roadmap: detailed milestones per package |
 
 ## Usage
 
-1. Copy `CLAUDE.md` and `ROADMAP.md` to your new project root
-2. Replace placeholders:
+1. Copy to project root:
+   - `CLAUDE.md` → `/CLAUDE.md`
+   - `ROADMAP.md` → `/ROADMAP.md`
+2. Copy to each package/app:
+   - `ROADMAP.package.md` → `/packages/*/ROADMAP.md`
+   - `ROADMAP.package.md` → `/apps/*/ROADMAP.md`
+3. Replace placeholders:
    - `PROJECT_NAME` → your project name
    - `@project/*` → your package prefix (e.g., `@myapp/*`)
    - `/path/to/project` → actual project path
-3. Update package table with your packages
-4. Add project-specific sections if needed
-5. Remove "Template Usage" section
+4. Update package table with your packages
+5. Add project-specific sections if needed
+6. Remove "Template Usage" sections
 
 ## What's Included
 
