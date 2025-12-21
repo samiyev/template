@@ -289,44 +289,68 @@ git push origin main --tags
 
 **⛔ MUST read `./ROADMAP.md` first** to understand current status.
 
-## ROADMAP.md Rules (MANDATORY)
+## Package Documentation (MANDATORY)
 
-**⛔ Every monorepo MUST have ROADMAP.md files:**
+**⛔ Every package/app MUST have these files:**
 
-| Location | Purpose |
-|----------|---------|
-| `/ROADMAP.md` | Master roadmap: phases, architecture, status table |
-| `/packages/*/ROADMAP.md` | Package roadmap: detailed milestones, tasks |
-| `/apps/*/ROADMAP.md` | App roadmap: features, UI/UX tasks |
+| File | Purpose |
+|------|---------|
+| `ROADMAP.md` | Milestones, tasks with checkboxes |
+| `CHANGELOG.md` | Version history, what changed |
+| `TODO.md` | Technical debt, known issues |
 
-**Root ROADMAP.md:**
+**Root level:**
+
+| File | Purpose |
+|------|---------|
+| `/ROADMAP.md` | Master: phases, architecture, status table |
+| `/CHANGELOG.md` | Optional: root-level changes only |
+
+## ROADMAP.md Rules
+
+| Rule | Requirement |
+|------|-------------|
+| Structure | Phases → Milestones → Tasks with `[x]`/`[ ]` |
+| Versioning | Independent semver per package (v0.1.0) |
+| Dependencies | Show "Depends on: package vX.X.X" |
+| Status | ✅ Completed, 🔄 In Progress, ⏳ Planned |
+
+## CHANGELOG.md Rules
+
+**Format:** [Keep a Changelog](https://keepachangelog.com/)
+
 ```markdown
-## Current Status
-| Package | Version | Next Milestone |
-|---------|---------|----------------|
-| @project/core | v0.2.0 ✅ | v0.3.0 - Feature |
-```
-
-**Package ROADMAP.md:**
-```markdown
-## v0.3.0 - Feature Name
-| Task | Status |
-|------|--------|
-| Entity: Name | [x] |
-| Use case | [ ] |
-```
-
-**Status indicators:**
-```
-✅ Completed | 🔄 In Progress | ⏳ Planned
+## [0.2.0] - 2025-01-15
+### Added
+- New feature X
+### Fixed
+- Bug in Y
+### Changed
+- Refactored Z
 ```
 
 **⛔ RULES:**
-- Root ROADMAP = bird's eye view (phases, dependencies)
-- Package ROADMAP = detailed tasks (checkboxes)
-- Update BEFORE starting new milestone
-- Mark tasks `[x]` immediately when done
-- Never skip dependency order
+- Update BEFORE release (not after)
+- Group by: Added, Changed, Fixed, Removed
+- Link to issues/PRs when relevant
+
+## TODO.md Rules (Technical Debt)
+
+**Format:**
+```markdown
+## High Priority
+- [ ] Fix memory leak in X (#123)
+- [x] ~~Refactor auth module~~ (done in v0.2.0)
+
+## Low Priority
+- [ ] Add caching to Y
+```
+
+**⛔ RULES:**
+- Add items when you notice shortcuts/hacks
+- Mark `[x]` when resolved
+- Reference in commits: `fix(api): resolve issue (TODO #3)`
+- Review before each release
 
 **Dependency order (always):**
 ```

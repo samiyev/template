@@ -8,7 +8,9 @@ Standard templates for Claude Code configuration across all projects.
 |------|-------------|
 | `CLAUDE.md` | Claude Code configuration with all mandatory rules |
 | `ROADMAP.md` | Root roadmap: phases, architecture, status table |
-| `ROADMAP.package.md` | Package roadmap: detailed milestones per package |
+| `ROADMAP.package.md` | Package roadmap: detailed milestones |
+| `CHANGELOG.package.md` | Package changelog: version history |
+| `TODO.package.md` | Package TODO: technical debt tracker |
 
 ## Usage
 
@@ -17,7 +19,8 @@ Standard templates for Claude Code configuration across all projects.
    - `ROADMAP.md` → `/ROADMAP.md`
 2. Copy to each package/app:
    - `ROADMAP.package.md` → `/packages/*/ROADMAP.md`
-   - `ROADMAP.package.md` → `/apps/*/ROADMAP.md`
+   - `CHANGELOG.package.md` → `/packages/*/CHANGELOG.md`
+   - `TODO.package.md` → `/packages/*/TODO.md`
 3. Replace placeholders:
    - `PROJECT_NAME` → your project name
    - `@project/*` → your package prefix (e.g., `@myapp/*`)
