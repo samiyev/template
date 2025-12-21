@@ -1,10 +1,17 @@
-# CLAUDE.md Template
+# Project Template
 
-Standard template for Claude Code configuration files across all projects.
+Standard templates for Claude Code configuration across all projects.
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `CLAUDE.md` | Claude Code configuration with all mandatory rules |
+| `ROADMAP.md` | Monorepo roadmap template with phases and milestones |
 
 ## Usage
 
-1. Copy `CLAUDE.md` to your new project root
+1. Copy `CLAUDE.md` and `ROADMAP.md` to your new project root
 2. Replace placeholders:
    - `PROJECT_NAME` → your project name
    - `@project/*` → your package prefix (e.g., `@myapp/*`)
@@ -35,6 +42,23 @@ Standard template for Claude Code configuration files across all projects.
 ❌ NEVER: any | console.log | floating promises | var | secrets in code | Docker
 LIMITS: 5 params | 100 lines | 4 depth | 15 complexity
 ```
+
+## ROADMAP.md Structure
+
+```
+Phase 1: Foundation
+├── @project/core v0.1.0 - Domain Types
+│   └── Depends on: nothing
+├── @project/api v0.1.0 - Infrastructure
+│   └── Depends on: core v0.1.0
+
+Phase 2: Features
+├── @project/core v0.2.0 - Feature Domain
+├── @project/api v0.2.0 - Feature Module
+└── @project/web v0.1.0 - Setup
+```
+
+**Dependency order:** `core → api → client → web`
 
 ## Projects Using This Template
 
