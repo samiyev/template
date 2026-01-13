@@ -362,13 +362,38 @@ Nginx → /api/* → PM2: api (port 4001)
 
 ## Release Pipeline
 
-```bash
-# 1. Atomic commits (one per entity/test/doc)
-# 2. Quality gates
-pnpm format && pnpm build && pnpm lint && pnpm test
+**⛔ Commit Order (dependencies first):**
+```
+1. @project/core    (domain, types)
+2. @project/api     (uses core)
+3. @project/web     (uses core, api)
+```
 
-# 3. Update CHANGELOG.md, ROADMAP.md
-# 4. Version & tag
+**Atomic Commits (one per module):**
+| Order | Scope | Example |
+|-------|-------|---------|
+| 1 | types | `feat(core): add Entity type` |
+| 2 | entity | `feat(core): add Entity` |
+| 3 | use case | `feat(core): add createEntity use case` |
+| 4 | endpoint | `feat(api): add entity endpoints` |
+| 5 | UI | `feat(web): add entity page` |
+| 6 | tests | `test(core): add Entity tests` |
+
+**⛔ RULES:**
+- One module = one commit
+- Each commit must pass all quality gates
+- Never commit unfinished dependencies
+- Commit order: types → entities → use cases → API → UI
+
+**Quality Gates (before EACH commit):**
+```bash
+pnpm format && pnpm lint && pnpm typecheck && pnpm test
+```
+
+**Release Steps:**
+```bash
+# 1. Update CHANGELOG.md, ROADMAP.md
+# 2. Version & tag
 npm version minor
 git tag <package>-v<version>
 git push origin main --tags
