@@ -496,6 +496,34 @@ LIMITS: 5 params | 100 lines | 4 depth | 15 complexity
 COMMANDS: pnpm format → pnpm lint → pnpm test → pnpm build
 ```
 
+## SLC Rules (MANDATORY)
+
+| Rule | Requirement |
+|------|-------------|
+| **v1.0 Feature** | <!-- TODO: Define ONE core feature --> |
+| **Quality** | Must be PERFECT, not "good enough" |
+| **No scope creep** | <!-- TODO: List features NOT in v1.0 --> |
+| **UX** | <!-- TODO: Define UX goal --> |
+| **Speed** | <!-- TODO: Define speed target --> |
+
+## Testing Checklist
+
+- [ ] <!-- TODO: Add project-specific test scenarios -->
+- [ ] Core feature works end-to-end
+- [ ] Error handling
+- [ ] Edge cases
+- [ ] Empty states
+
+## Release Checklist
+
+- [ ] All `console.log` removed
+- [ ] `pnpm lint` passes (0 errors, 0 warnings)
+- [ ] `pnpm typecheck` passes
+- [ ] All tests pass
+- [ ] CHANGELOG.md updated
+- [ ] ROADMAP.md updated
+- [ ] Version bumped in package.json
+
 ---
 
 ## Template Usage
